@@ -1,0 +1,39 @@
+1. Create typeset.css
+Copy the stylesheet into a typeset.css file next to your main CSS file, then import it:
+
+@import "tailwindcss";
+@import "./typeset.css";
+
+2. Add the fonts
+npm install @fontsource-variable/geist @fontsource-variable/geist-mono
+
+Then import them in your CSS file:
+
+/* globals.css */
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+:root {
+  --font-geist: 'Geist Variable', sans-serif;
+  --font-geist-mono: 'Geist Mono Variable', monospace;
+}
+
+
+3. Create your custom typeset
+/* globals.css */
+@import "tailwindcss";
+@import "./typeset.css";
+
+.typeset-docs {
+  --typeset-font-body: var(--font-geist);
+  --typeset-font-heading: var(--font-geist);
+  --typeset-font-mono: var(--font-geist-mono);
+  --typeset-size: 15px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
+}
+
+4. Wrap your content
+<div className="typeset typeset-docs max-w-[37em]">
+  {content}
+</div>

@@ -1,0 +1,43 @@
+1. Create typeset.css
+Copy the stylesheet into a typeset.css file next to your main CSS file, then import it:
+
+@import "tailwindcss";
+@import "./typeset.css";
+
+2. Add the fonts
+Load the fonts with next/font in your root layout:
+
+// app/layout.tsx
+import { Geist, Geist_Mono } from "next/font/google"
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+})
+
+<html className={`${geist.variable} ${geistMono.variable}`}>
+
+3. Create your custom typeset
+/* globals.css */
+@import "tailwindcss";
+@import "./typeset.css";
+
+.typeset-docs {
+  --typeset-font-body: var(--font-geist);
+  --typeset-font-heading: var(--font-geist);
+  --typeset-font-mono: var(--font-geist-mono);
+  --typeset-size: 15px;
+  --typeset-leading: 1.75;
+  --typeset-flow: 1.25em;
+}
+
+4. Wrap your content
+<div className="typeset typeset-docs max-w-[37em]">
+  {content}
+</div>
+
